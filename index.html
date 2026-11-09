@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodShield: Preserving Food Safety across Vulnerable Societies - Academic Defense</title>
+
+  <!-- Google Fonts for Medical-Tech & Academic Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Reveal.js Core CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css" />
+  <!-- Base Theme -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/white.min.css" />
+
+  <!-- MathJax 3 Configuration for High-Precision LaTeX Rendering -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
+  <style>
+    /* ==========================================================================
+       MULTI-THEME COLOR SYSTEM & SPATIAL ENGINE
+       Themes:
+         1. Cyber Navy & Cyan (Default Medical-Tech)
+         2. Bio-Safety Emerald (Life Sciences & Ecology)
+         3. Academic Sky & Slate (Modern Light Mode)
+         4. Deep Indigo & Violet (Data Science)
+         5. Risk Amber & Crimson (Crisis Epidemiology)
+       ========================================================================== */
+
+    /* 1. Default: Cyber Navy & Cyan */
+    :root, body.theme-navy {
+      --bg-gradient: radial-gradient(circle at 85% 15%, #0f2744 0%, #071526 45%, #040913 100%);
+      --grid-color: rgba(0, 229, 255, 0.035);
+      --bg-card: rgba(13, 27, 49, 0.78);
+      --bg-card-hover: rgba(18, 38, 68, 0.90);
+      --border-accent: rgba(0, 229, 255, 0.28);
+      --border-accent-bright: #00e5ff;
+      --accent-primary: #00e5ff;
+      --accent-secondary: #00b4d8;
+      --accent-glow: rgba(0, 229, 255, 0.35);
+      --heading-color: #ffffff;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --alert-crimson: #ff3366;
+      --alert-bg: rgba(255, 51, 102, 0.12);
+      --alert-border: rgba(255, 51, 102, 0.45);
+      --alert-text: #fecdd3;
+      --alert-title: #ff6b8b;
+      --success-green: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.12);
+      --success-border: rgba(16, 185, 129, 0.40);
+      --success-text: #d1fae5;
+      --success-title: #34d399;
+      --tag-bg: rgba(0, 229, 255, 0.10);
+      --formula-bg: rgba(7, 18, 36, 0.85);
+      --theme-btn-active: #00e5ff;
+      --chrome-bar: rgba(8, 20, 39, 0.95);
+      --widget-bg: rgba(10, 20, 36, 0.88);
+      --widget-border: rgba(0, 229, 255, 0.3);
+    }
+
+    /* 2. Bio-Safety Emerald */
+    body.theme-emerald {
+      --bg-gradient: radial-gradient(circle at 85% 15%, #0d3829 0%, #062017 45%, #020f0b 100%);
+      --grid-color: rgba(16, 185, 129, 0.035);
+      --bg-card: rgba(8, 36, 26, 0.78);
+      --bg-card-hover: rgba(12, 48, 35, 0.90);
+      --border-accent: rgba(16, 185, 129, 0.32);
+      --border-accent-bright: #10b981;
+      --accent-primary: #10b981;
+      --accent-secondary: #34d399;
+      --accent-glow: rgba(16, 185, 129, 0.35);
+      --heading-color: #ffffff;
+      --text-main: #f0fdf4;
+      --text-muted: #a7f3d0;
+      --text-dim: #6ee7b7;
+      --alert-crimson: #f97316;
+      --alert-bg: rgba(249, 115, 22, 0.14);
+      --alert-border: rgba(249, 115, 22, 0.45);
+      --alert-text: #fed7aa;
+      --alert-title: #fb923c;
+      --success-green: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.15);
+      --success-border: rgba(16, 185, 129, 0.45);
+      --success-text: #d1fae5;
+      --success-title: #6ee7b7;
+      --tag-bg: rgba(16, 185, 129, 0.12);
+      --formula-bg: rgba(4, 24, 17, 0.88);
+      --theme-btn-active: #10b981;
+      --chrome-bar: rgba(5, 28, 20, 0.95);
+      --widget-bg: rgba(5, 28, 20, 0.88);
+      --widget-border: rgba(16, 185, 129, 0.3);
+    }
+
+    /* 3. Academic Sky & Slate (Light Theme) */
+    body.theme-light {
+      --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      --grid-color: rgba(15, 23, 42, 0.045);
+      --bg-card: rgba(255, 255, 255, 0.94);
+      --bg-card-hover: #ffffff;
+      --border-accent: rgba(2, 132, 199, 0.32);
+      --border-accent-bright: #0284c7;
+      --accent-primary: #0284c7;
+      --accent-secondary: #0369a1;
+      --accent-glow: rgba(2, 132, 199, 0.22);
+      --heading-color: #0f172a;
+      --text-main: #1e293b;
+      --text-muted: #475569;
+      --text-dim: #64748b;
+      --alert-crimson: #dc2626;
+      --alert-bg: rgba(220, 38, 38, 0.08);
+      --alert-border: rgba(220, 38, 38, 0.35);
+      --alert-text: #991b1b;
+      --alert-title: #b91c1c;
+      --success-green: #059669;
+      --success-bg: rgba(5, 150, 105, 0.08);
+      --success-border: rgba(5, 150, 105, 0.35);
+      --success-text: #065f46;
+      --success-title: #047857;
+      --tag-bg: rgba(2, 132, 199, 0.10);
+      --formula-bg: #f1f5f9;
+      --theme-btn-active: #0284c7;
+      --chrome-bar: #e2e8f0;
+      --widget-bg: rgba(255, 255, 255, 0.95);
+      --widget-border: rgba(2, 132, 199, 0.35);
+    }
+
+    /* 4. Deep Indigo & Violet */
+    body.theme-indigo {
+      --bg-gradient: radial-gradient(circle at 85% 15%, #1e1145 0%, #100a29 45%, #060412 100%);
+      --grid-color: rgba(168, 85, 247, 0.035);
+      --bg-card: rgba(26, 17, 56, 0.78);
+      --bg-card-hover: rgba(35, 23, 74, 0.90);
+      --border-accent: rgba(168, 85, 247, 0.32);
+      --border-accent-bright: #c084fc;
+      --accent-primary: #c084fc;
+      --accent-secondary: #38bdf8;
+      --accent-glow: rgba(168, 85, 247, 0.35);
+      --heading-color: #ffffff;
+      --text-main: #f5f3ff;
+      --text-muted: #c4b5fd;
+      --text-dim: #a78bfa;
+      --alert-crimson: #f43f5e;
+      --alert-bg: rgba(244, 63, 94, 0.14);
+      --alert-border: rgba(244, 63, 94, 0.45);
+      --alert-text: #fecdd3;
+      --alert-title: #fb7185;
+      --success-green: #2dd4bf;
+      --success-bg: rgba(45, 212, 191, 0.14);
+      --success-border: rgba(45, 212, 191, 0.45);
+      --success-text: #ccfbf1;
+      --success-title: #5eead4;
+      --tag-bg: rgba(168, 85, 247, 0.12);
+      --formula-bg: rgba(17, 10, 38, 0.88);
+      --theme-btn-active: #c084fc;
+      --chrome-bar: rgba(19, 12, 43, 0.95);
+      --widget-bg: rgba(19, 12, 43, 0.88);
+      --widget-border: rgba(168, 85, 247, 0.3);
+    }
+
+    /* 5. Risk Amber & Crimson */
+    body.theme-amber {
+      --bg-gradient: radial-gradient(circle at 85% 15%, #2d2109 0%, #1c1507 45%, #0b0904 100%);
+      --grid-color: rgba(245, 158, 11, 0.035);
+      --bg-card: rgba(36, 28, 12, 0.78);
+      --bg-card-hover: rgba(48, 38, 18, 0.90);
+      --border-accent: rgba(245, 158, 11, 0.32);
+      --border-accent-bright: #fbbf24;
+      --accent-primary: #fbbf24;
+      --accent-secondary: #f59e0b;
+      --accent-glow: rgba(245, 158, 11, 0.35);
+      --heading-color: #ffffff;
+      --text-main: #fffbeb;
+      --text-muted: #fde68a;
+      --text-dim: #fcd34d;
+      --alert-crimson: #ef4444;
+      --alert-bg: rgba(239, 68, 68, 0.14);
+      --alert-border: rgba(239, 68, 68, 0.45);
+      --alert-text: #fee2e2;
+      --alert-title: #f87171;
+      --success-green: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.14);
+      --success-border: rgba(16, 185, 129, 0.45);
+      --success-text: #d1fae5;
+      --success-title: #34d399;
+      --tag-bg: rgba(245, 158, 11, 0.12);
+      --formula-bg: rgba(24, 18, 7, 0.88);
+      --theme-btn-active: #fbbf24;
+      --chrome-bar: rgba(26, 20, 8, 0.95);
+      --widget-bg: rgba(26, 20, 8, 0.88);
+      --widget-border: rgba(245, 158, 11, 0.3);
+    }
+
+    /* Common Font & Layout Architecture */
+    :root {
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    /* Reveal container styling */
+    .reveal {
+      font-family: var(--font-sans);
+      color: var(--text-main);
+      font-size: 20px; /* Carefully calibrated for comfortable slide density */
+    }
+
+    /* Exact slide viewport bounding: prevents any text overlapping or overflow */
+    .reveal .slides section {
+      height: 720px !important;
+      max-height: 720px !important;
+      padding: 24px 34px 28px 34px !important;
+      box-sizing: border-box;
+      display: flex !important;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: left;
+      overflow: hidden !important;
+    }
+
+    /* Slide dynamic backgrounds */
+    .reveal .slide-background {
+      background: var(--bg-gradient) !important;
+      transition: background 0.4s ease;
+    }
+
+    /* Subtle cyber grid texture */
+    .reveal .slide-background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+      background-size: 38px 38px;
+      pointer-events: none;
+    }
+
+    /* Headings with crisp proportional scaling */
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+      font-family: var(--font-sans);
+      text-transform: none;
+      letter-spacing: -0.015em;
+      margin: 0;
+      line-height: 1.15;
+    }
+
+    .reveal h1 {
+      font-size: 1.95em;
+      font-weight: 800;
+      color: var(--accent-primary);
+      text-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .reveal h2 {
+      font-size: 1.28em;
+      font-weight: 700;
+      margin-bottom: 2px;
+      color: var(--heading-color);
+    }
+
+    .reveal h3 {
+      font-size: 0.88em;
+      font-weight: 600;
+      color: var(--accent-primary);
+      letter-spacing: 0.01em;
+    }
+
+    .reveal p, .reveal li {
+      font-size: 0.72em;
+      line-height: 1.45;
+      color: var(--text-main);
+      margin: 0 0 6px 0;
+    }
+
+    /* Section Category Badge */
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.50em;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      background: var(--tag-bg);
+      border: 1px solid var(--border-accent);
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-bottom: 4px;
+      width: fit-content;
+    }
+
+    .section-badge::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-primary);
+      box-shadow: 0 0 6px var(--accent-primary);
+    }
+
+    /* Minimal Accent Bar */
+    .accent-bar {
+      width: 42px;
+      height: 2.5px;
+      background: linear-gradient(90deg, var(--accent-primary), transparent);
+      border-radius: 2px;
+      margin: 4px 0 12px 0;
+      flex-shrink: 0;
+    }
+
+    /* Frosted Cards */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-radius: 9px;
+      padding: 12px 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
+      box-sizing: border-box;
+    }
+
+    .glass-card:hover {
+      border-color: var(--border-accent-bright);
+      background: var(--bg-card-hover);
+    }
+
+    .glass-card-alert {
+      background: var(--alert-bg);
+      border: 1px solid var(--alert-border);
+      border-radius: 9px;
+      padding: 12px 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+      box-sizing: border-box;
+    }
+
+    .glass-card-success {
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      border-radius: 9px;
+      padding: 12px 16px;
+      box-sizing: border-box;
+    }
+
+    /* Grid Layouts with clean bounded gaps */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+      margin-top: 4px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 4px;
+    }
+
+    /* Pill Tags */
+    .pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--tag-bg);
+      color: var(--accent-primary);
+      border: 1px solid var(--border-accent);
+      border-radius: 16px;
+      padding: 3px 10px;
+      font-size: 0.54em;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .pill-tag-alert {
+      background: var(--alert-bg);
+      color: var(--alert-title);
+      border: 1px solid var(--alert-border);
+    }
+
+    .pill-tag-green {
+      background: var(--success-bg);
+      color: var(--success-title);
+      border: 1px solid var(--success-border);
+    }
+
+    /* Metric Display */
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 1.15em;
+      font-weight: 700;
+      color: var(--accent-primary);
+      line-height: 1.1;
+    }
+
+    .metric-label {
+      font-size: 0.52em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 3px;
+    }
+
+    /* Math Formula Callout */
+    .formula-box {
+      background: var(--formula-bg);
+      border: 1px solid var(--border-accent);
+      border-left: 3px solid var(--accent-primary);
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 6px 0;
+      box-sizing: border-box;
+    }
+
+    .reveal mjx-container {
+      color: var(--accent-primary) !important;
+      font-size: 0.95em !important;
+    }
+
+    /* Thesis Hero Card */
+    .thesis-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-radius: 10px;
+      padding: 22px 28px;
+      position: relative;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      margin: 10px 0;
+    }
+
+    .thesis-text {
+      font-size: 0.88em;
+      line-height: 1.6;
+      font-weight: 400;
+      color: var(--heading-color);
+      margin: 0;
+    }
+
+    .thesis-highlight {
+      color: var(--accent-primary);
+      font-weight: 700;
+    }
+
+    /* Live Simulator Dedicated Frame */
+    .sim-container {
+      width: 100%;
+      height: 380px; /* Optimized height to guarantee zero overlap */
+      position: relative;
+      background: #020610;
+      border: 1px solid var(--border-accent);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      margin: 4px 0 8px 0;
+      flex-shrink: 0;
+    }
+
+    .sim-iframe {
+      width: 100%;
+      height: calc(100% - 24px);
+      border: none;
+      display: block;
+      background: #ffffff;
+    }
+
+    .sim-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--chrome-bar);
+      height: 24px;
+      padding: 0 12px;
+      border-bottom: 1px solid var(--border-accent);
+      font-family: var(--font-mono);
+      font-size: 0.48em;
+    }
+
+    /* Numbered Conclusions */
+    .num-bullet {
+      width: 26px;
+      height: 26px;
+      min-width: 26px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #030a16;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      font-size: 0.78em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    /* References Entries */
+    .ref-entry {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-radius: 6px;
+      padding: 7px 10px;
+      margin-bottom: 7px;
+      font-size: 0.58em;
+      line-height: 1.38;
+      color: var(--text-muted);
+    }
+
+    .ref-entry strong {
+      color: var(--heading-color);
+    }
+
+    .ref-entry em {
+      color: var(--accent-primary);
+      font-style: normal;
+    }
+
+    /* Non-overlapping Slide Footer */
+    .slide-footer-meta {
+      margin-top: auto; /* Clean flex positioning at the bottom */
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.44em;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      border-top: 1px solid var(--border-accent);
+      padding-top: 5px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    /* Shield SVG Icon */
+    .shield-svg {
+      width: 38px;
+      height: 42px;
+      fill: none;
+      stroke: var(--accent-primary);
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 0 8px var(--accent-glow));
+    }
+
+    /* Live Badge Dot */
+    @keyframes pulse-dot {
+      0% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.15); }
+      100% { opacity: 0.4; transform: scale(0.9); }
+    }
+    .pulse-indicator {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--success-green);
+      box-shadow: 0 0 6px var(--success-green);
+      animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+
+    /* Reveal Controls & Progress Bar */
+    .reveal .controls {
+      color: var(--accent-primary) !important;
+    }
+    .reveal .progress {
+      color: var(--accent-primary) !important;
+      background: rgba(0, 0, 0, 0.2) !important;
+      height: 3px;
+    }
+    .reveal .progress span {
+      background: var(--accent-primary) !important;
+      box-shadow: 0 0 8px var(--accent-primary);
+    }
+    .reveal .slide-number {
+      font-family: var(--font-mono);
+      color: var(--accent-primary) !important;
+      background: var(--bg-card) !important;
+      border: 1px solid var(--border-accent);
+      border-radius: 4px;
+      font-size: 11px !important;
+      padding: 3px 6px;
+    }
+
+    /* ==========================================================================
+       FLOATING INTERACTIVE THEME SWITCHER WIDGET
+       ========================================================================== */
+    .theme-switcher-widget {
+      position: fixed;
+      top: 12px;
+      right: 14px;
+      z-index: 99999;
+      background: var(--widget-bg);
+      border: 1px solid var(--widget-border);
+      border-radius: 20px;
+      padding: 4px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      font-family: var(--font-sans);
+    }
+
+    .theme-switcher-widget:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .theme-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .theme-swatches {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .swatch-btn {
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      padding: 0;
+      outline: none;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .swatch-btn:hover {
+      transform: scale(1.22);
+    }
+
+    .swatch-btn.active {
+      border-color: #ffffff;
+      transform: scale(1.25);
+      box-shadow: 0 0 6px var(--accent-primary);
+    }
+
+    body.theme-light .swatch-btn.active {
+      border-color: #0f172a;
+    }
+
+    .theme-hint {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--text-dim);
+      padding-left: 2px;
+      border-left: 1px solid var(--border-accent);
+    }
+
+    .theme-hint kbd {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-accent);
+      border-radius: 3px;
+      padding: 1px 3px;
+      color: var(--accent-primary);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="theme-navy">
+
+<!-- Floating Theme Switcher -->
+<div class="theme-switcher-widget" id="theme-widget" title="Switch Presentation Color Scheme (or press 'T')">
+  <div class="theme-label">
+    <span>&#x1F3A8;</span>
+    <span id="theme-display-name">Cyber Navy</span>
+  </div>
+  <div class="theme-swatches">
+    <button class="swatch-btn active" data-theme="theme-navy" data-name="Cyber Navy" title="Cyber Navy &amp; Cyan (Medical-Tech)" style="background: linear-gradient(135deg, #050d1a 50%, #00e5ff 50%);"></button>
+    <button class="swatch-btn" data-theme="theme-emerald" data-name="Bio Emerald" title="Bio-Safety Emerald (Life Sciences)" style="background: linear-gradient(135deg, #031412 50%, #10b981 50%);"></button>
+    <button class="swatch-btn" data-theme="theme-light" data-name="Academic Sky" title="Academic Sky &amp; Slate (Light Mode)" style="background: linear-gradient(135deg, #f8fafc 50%, #0284c7 50%); border: 1px solid #94a3b8;"></button>
+    <button class="swatch-btn" data-theme="theme-indigo" data-name="Deep Violet" title="Deep Indigo &amp; Violet (Data Science)" style="background: linear-gradient(135deg, #070617 50%, #c084fc 50%);"></button>
+    <button class="swatch-btn" data-theme="theme-amber" data-name="Risk Amber" title="Risk Amber &amp; Crimson (Crisis Alert)" style="background: linear-gradient(135deg, #0b0904 50%, #fbbf24 50%);"></button>
+  </div>
+  <div class="theme-hint"><kbd>T</kbd></div>
+</div>
+
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ======================================================================
+         SLIDE 1: TITLE & INSTITUTIONAL METADATA (Opening 0:00 - 1:00)
+         ====================================================================== -->
+    <section data-transition="fade" style="justify-content: center; align-items: center; text-align: center;">
+      <div style="max-width: 980px; margin: 0 auto;">
+        
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+          <svg class="shield-svg" viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="M12 8v8M8 12h8" stroke="var(--accent-secondary)" stroke-width="1.8" />
+          </svg>
+        </div>
+
+        <div class="section-badge">Academic Oral Defense: 10th-Grade Interdisciplinary Project</div>
+
+        <h1 style="margin: 6px 0 4px;">FoodShield</h1>
+        <p style="color: var(--accent-primary); font-size: 0.9em; font-weight: 600; letter-spacing: 0.01em; margin: 0 0 6px;">
+          Preserving Food Safety across Vulnerable Societies
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.68em; max-width: 780px; margin: 0 auto 16px; font-weight: 400;">
+          Interdisciplinary Bio-Thermal Simulation &amp; Public Health Policy Analysis
+        </p>
+
+        <div style="width: 60px; height: 2px; background: linear-gradient(90deg, transparent, var(--accent-primary), transparent); margin: 0 auto 16px;"></div>
+
+        <!-- Target Academic Areas Badges -->
+        <div style="display: flex; justify-content: center; gap: 7px; flex-wrap: wrap; margin-bottom: 20px;">
+          <span class="pill-tag">&#x269B; Technoscience</span>
+          <span class="pill-tag">&#x2211; Mathematics</span>
+          <span class="pill-tag">&#x1F310; English</span>
+          <span class="pill-tag">&#x1F5FA; Social Studies</span>
+          <span class="pill-tag">&#x2696; Philosophy</span>
+        </div>
+
+        <!-- Institutional Metadata Box -->
+        <div class="glass-card" style="display: inline-block; padding: 10px 24px; font-family: var(--font-mono); font-size: 0.55em; color: var(--text-muted);">
+          <span>Location: <strong style="color: var(--heading-color);">Ibagué, Colombia</strong></span>
+          <span style="margin: 0 10px; color: var(--border-accent);">|</span>
+          <span>Target Community: <strong style="color: var(--accent-primary);">Comuna 8 Settlements</strong></span>
+          <span style="margin: 0 10px; color: var(--border-accent);">|</span>
+          <span>Scope: <strong style="color: var(--heading-color);">Grade 10 Defense Panel</strong></span>
+        </div>
+
+      </div>
+
+      <div class="slide-footer-meta">
+        <span>Project: FoodShield</span>
+        <span>Slide 1 of 9</span>
+        <span>Institutional Opening</span>
+      </div>
+
+      <aside class="notes">
+        <strong>Pacing: 0:00 - 1:00 (1 Minute)</strong><br/>
+        <strong>Opening Script:</strong> Good morning, esteemed members of the academic evaluation panel. Today, I am proud to present FoodShield: Preserving Food Safety across Vulnerable Societies.<br/><br/>
+        This project represents a thorough 10th-grade interdisciplinary investigation bridging Technoscience, Mathematics, English, Social Studies, and Philosophy.<br/><br/>
+        Our central inquiry examines how predictive thermodynamic modeling and community-centered policy advocacy can safeguard vulnerable communities in Ibagué from foodborne enteric infections caused by informal, un-refrigerated food logistics.<br/><br/>
+        <em>Tip for presenter: Speak with confidence, make eye contact with all evaluators, and highlight the interdisciplinary harmony of the research.</em>
+      </aside>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 2: PROBLEM FRAMING (Socio-Spatial & Biological Context 1:00 - 2:30)
+         ====================================================================== -->
+    <section data-transition="slide">
+      <div class="section-badge">Socio-Spatial &amp; Biological Context</div>
+      <h2>Problem Framing: Logistics in Comuna 8</h2>
+      <div class="accent-bar"></div>
+
+      <div class="grid-2">
+        
+        <!-- Left Column: Spatial & Logistical Realities -->
+        <div class="glass-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <h3>&#x1F5FA; Urban Vulnerability Context</h3>
+            <span class="pill-tag">Ibagué, Tolima</span>
+          </div>
+          
+          <p style="margin-bottom: 8px;">
+            In <strong style="color: var(--heading-color);">Comuna 8</strong>, hundreds of informal vendors transport fresh poultry using motorbikes, open plastic bins, and uninsulated crates without mechanical refrigeration.
+          </p>
+
+          <div style="background: var(--formula-bg); border-radius: 6px; padding: 8px 12px; margin-bottom: 8px; border-left: 3px solid var(--accent-primary);">
+            <div class="metric-value">22 &deg;C &ndash; 31 &deg;C</div>
+            <div class="metric-label">Ambient Exposure Temperature during Transit</div>
+          </div>
+
+          <p style="font-size: 0.65em; color: var(--text-muted); margin: 0;">
+            Transit durations fluctuate between 30 and 180 minutes under direct tropical solar radiation, creating rapid thermal equilibrium between ambient heat and food tissue.
+          </p>
+        </div>
+
+        <!-- Right Column: Microbiological Hazard -->
+        <div class="glass-card-alert">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <h3 style="color: var(--alert-title);">&#x26A0; Public Health Threat</h3>
+            <span class="pill-tag pill-tag-alert">Biological Crisis</span>
+          </div>
+
+          <p style="margin-bottom: 8px; color: var(--alert-text);">
+            Absence of cold-chain infrastructure triggers explosive microbiological kinetics.
+            The primary pathogen of concern is <em style="color: var(--heading-color);">Salmonella enterica</em>.
+          </p>
+
+          <div style="background: rgba(0, 0, 0, 0.2); border-radius: 6px; padding: 8px 12px; margin-bottom: 8px; border-left: 3px solid var(--alert-crimson);">
+            <div class="metric-value" style="color: var(--alert-crimson);">&lt; 20 min</div>
+            <div class="metric-label" style="color: var(--alert-title);">Optimal Cellular Doubling Time at 35 &deg;C &ndash; 40 &deg;C</div>
+          </div>
+
+          <p style="font-size: 0.65em; color: var(--alert-text); margin: 0;">
+            Without municipal temperature regulation or active cooling, innocent consumer households in informal settlements absorb the cumulative disease burden of salmonellosis and gastrointestinal morbidity.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="slide-footer-meta">
+        <span>FoodShield Defense</span>
+        <span>Slide 2 of 9</span>
+        <span>Problem Framing: Comuna 8 (Tolima)</span>
+      </div>
+
+      <aside class="notes">
+        <strong>Pacing: 1:00 - 2:30 (1.5 Minutes)</strong><br/>
+        <strong>Panel Script:</strong> Let us examine the empirical reality on the ground in Comuna 8 of Ibagué, Tolima.<br/><br/>
+        Due to municipal infrastructure disparities and low capital access, fresh poultry moves daily through informal transit networks on motorbikes and uninsulated carts under ambient temperatures ranging from 22 to 31 degrees Celsius.<br/><br/>
+        From a biological perspective, poultry core temperatures quickly enter the critical danger zone above 8 degrees Celsius. Under this thermal loading, Salmonella bacteria undergo exponential binary fission, with doubling intervals shrinking to under 20 minutes.<br/><br/>
+        This creates an acute public health hazard where vulnerable households in informal settlements disproportionately face severe foodborne disease.
+      </aside>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 3: RESEARCH OBJECTIVES (2:30 - 3:30)
+         ====================================================================== -->
+    <section data-transition="slide">
+      <div class="section-badge">Methodological &amp; Policy Framework</div>
+      <h2>Research Objectives</h2>
+      <div class="accent-bar"></div>
+
+      <!-- General Objective Banner -->
+      <div class="glass-card" style="border-left: 3px solid var(--accent-primary); margin-bottom: 12px; padding: 10px 16px;">
+        <div style="font-family: var(--font-mono); font-size: 0.50em; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;">
+          General Objective
+        </div>
+        <p style="font-size: 0.76em; margin: 0; color: var(--heading-color); font-weight: 500;">
+          Evaluate and mitigate biological risk in informal food logistics to Comuna 8 through predictive bio-thermal modeling and formal academic policy advocacy.
+        </p>
+      </div>
+
+      <!-- Specific Objectives Grid -->
+      <div class="grid-3">
+        
+        <div class="glass-card">
+          <div style="font-family: var(--font-mono); font-size: 0.50em; color: var(--accent-primary); margin-bottom: 4px;">
+            SPECIFIC OBJECTIVE 01
+          </div>
+          <h3 style="font-size: 0.82em; margin-bottom: 6px;">Computational Kinetics</h3>
+          <p style="font-size: 0.65em; color: var(--text-muted); margin-bottom: 6px;">
+            Model thermal dissipation and exponential bacterial kinetics ($N(t) = N_0 \cdot 2^{n}$) using custom Python numerical simulation.
+          </p>
+          <span class="pill-tag">&#x269B; Technoscience &amp; Math</span>
+        </div>
+
+        <div class="glass-card">
+          <div style="font-family: var(--font-mono); font-size: 0.50em; color: var(--accent-primary); margin-bottom: 4px;">
+            SPECIFIC OBJECTIVE 02
+          </div>
+          <h3 style="font-size: 0.82em; margin-bottom: 6px;">Socio-Spatial Justice</h3>
+          <p style="font-size: 0.65em; color: var(--text-muted); margin-bottom: 6px;">
+            Integrate socio-spatial metrics (DANE, RUV) with distributive justice frameworks to demonstrate safe food access as a human right.
+          </p>
+          <span class="pill-tag">&#x1F5FA; Social Studies &amp; Phil.</span>
+        </div>
+
+        <div class="glass-card">
+          <div style="font-family: var(--font-mono); font-size: 0.50em; color: var(--accent-primary); margin-bottom: 4px;">
+            SPECIFIC OBJECTIVE 03
+          </div>
+          <h3 style="font-size: 0.82em; margin-bottom: 6px;">Actionable Mitigation</h3>
+          <p style="font-size: 0.65em; color: var(--text-muted); margin-bottom: 6px;">
+            Formulate low-cost, actionable logistical recommendations for municipal health secretariats and community vendors.
+          </p>
+          <span class="pill-tag">&#x1F310; Policy &amp; Public Health</span>
+        </div>
+
+      </div>
+
+      <div class="slide-footer-meta">
+        <span>FoodShield Defense</span>
+        <span>Slide 3 of 9</span>
+        <span>Research Objectives</span>
+      </div>
+
+      <aside class="notes">
+        <strong>Pacing: 2:30 - 3:30 (1 Minute)</strong><br/>
+        <strong>Panel Script:</strong> To address this challenge, our investigation was structured around one general and three specific objectives.<br/><br/>
+        Our general objective is to quantitatively evaluate and mitigate biological risk in informal food logistics to Comuna 8 through predictive bio-thermal modeling and formal policy advocacy.<br/><br/>
+        First, computationally, we simulate thermal dissipation and binary bacterial growth using Python.<br/>
+        Second, socially and philosophically, we cross-reference DANE and RUV databases under distributive justice principles, proving safe food is an inalienable right.<br/>
+        Third, operatively, we produce low-cost logistical guidelines directly usable by local authorities and informal poultry distributors.
+      </aside>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 4: CENTRAL THESIS STATEMENT (3:30 - 4:30)
+         ====================================================================== -->
+    <section data-transition="zoom">
+      <div class="section-badge">Core Academic Proposition</div>
+      <h2>Central Thesis Statement</h2>
+      <div class="accent-bar"></div>
+
+      <div class="thesis-container">
+        <p class="thesis-text">
+          &ldquo;Thermal food degradation during informal transport in Ibagué is
+          <span class="thesis-highlight">not an inevitable accident of urban poverty</span>,
+          but a <span class="thesis-highlight">preventable public health inequality</span>
+          that can be quantitatively predicted, visualized, and mitigated through
+          <span class="thesis-highlight">low-cost bio-thermal simulation tools</span>.&rdquo;
+        </p>
+      </div>
+
+      <!-- Core Theoretical Pillars -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px;">
+        
+        <div class="glass-card" style="text-align: center; padding: 10px 8px;">
+          <div style="font-size: 1.1em; color: var(--accent-primary); margin-bottom: 2px;">&#x1F4CA;</div>
+          <div style="font-size: 0.62em; font-weight: 700; color: var(--heading-color);">Predictive Physics</div>
+          <div style="font-size: 0.50em; color: var(--text-muted); margin-top: 2px;">Differential thermodynamic dissipation curves</div>
+        </div>
+
+        <div class="glass-card" style="text-align: center; padding: 10px 8px;">
+          <div style="font-size: 1.1em; color: var(--accent-primary); margin-bottom: 2px;">&#x2696;</div>
+          <div style="font-size: 0.62em; font-weight: 700; color: var(--heading-color);">Distributive Justice</div>
+          <div style="font-size: 0.50em; color: var(--text-muted); margin-top: 2px;">Food safety as an enforceable constitutional right</div>
+        </div>
+
+        <div class="glass-card" style="text-align: center; padding: 10px 8px;">
+          <div style="font-size: 1.1em; color: var(--accent-primary); margin-bottom: 2px;">&#x1F6E1;</div>
+          <div style="font-size: 0.62em; font-weight: 700; color: var(--heading-color);">Frugal Engineering</div>
+          <div style="font-size: 0.50em; color: var(--text-muted); margin-top: 2px;">Passive thermal packaging barriers under $3 USD</div>
+        </div>
+
+        <div class="glass-card" style="text-align: center; padding: 10px 8px;">
+          <div style="font-size: 1.1em; color: var(--accent-primary); margin-bottom: 2px;">&#x1F310;</div>
+          <div style="font-size: 0.62em; font-weight: 700; color: var(--heading-color);">Democratized Tech</div>
+          <div style="font-size: 0.50em; color: var(--text-muted); margin-top: 2px;">Open web simulators for community actors</div>
+        </div>
+
+      </div>
+
+      <div class="slide-footer-meta">
+        <span>FoodShield Defense</span>
+        <span>Slide 4 of 9</span>
+        <span>Central Thesis Statement</span>
+      </div>
+
+      <aside class="notes">
+        <strong>Pacing: 3:30 - 4:30 (1 Minute)</strong><br/>
+        <strong>Panel Script:</strong> Here lies the intellectual heartbeat of our project. Traditional public health narratives often treat food spoilage in informal settlements as an inevitable consequence of socioeconomic hardship.<br/><br/>
+        Our thesis directly challenges this fatalism. We demonstrate that bacterial proliferation during transit is not an uncontrollable fate; it is a measurable, mathematically predictable inequality.<br/><br/>
+        By bridging physics with public policy, we can empower municipal secretariats and local vendors with quantitative tools that eliminate guesswork and protect human lives.
+      </aside>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 5: LIVE PRODUCT DEMO (Embedded Web Simulator 4:30 - 7:30)
+         ====================================================================== -->
+    <section data-transition="fade">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <div>
+          <div class="section-badge">
+            <span class="pulse-indicator"></span> Live Simulator Deployment
+          </div>
+          <h2 style="font-size: 1.15em;">Interactive Product Showcase: FoodShield Web Simulator</h2>
+        </div>
+        <div>
+          <a href="https://mfgatos3.github.io/foodshield-simulator/" target="_blank" rel="noopener noreferrer" 
+             style="font-family: var(--font-mono); font-size: 0.50em; color: var(--accent-primary); text-decoration: none; border: 1px solid var(--border-accent); padding: 3px 8px; border-radius: 4px; background: var(--tag-bg);">
+            &#x2197; Open Live Simulator Fullscreen
+          </a>
+        </div>
+      </div>
+
+      <!-- Dedicated Simulator Container with calibrated height to prevent overlap -->
+      <div class="sim-container">
+        <div class="sim-bar">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="color: var(--accent-primary);">&#x25CF;</span>
+            <span style="color: var(--heading-color); font-weight: 700;">foodshield-simulator</span>
+            <span style="color: var(--text-muted);">| Python Streamlit Engine</span>
+          </div>
+          <div style="display: flex; gap: 10px; color: var(--text-muted);">
+            <span>Status: <strong style="color: var(--success-green);">ONLINE</strong></span>
+            <span>Host: GitHub Pages / Cloud CDN</span>
+          </div>
+        </div>
+
+        <iframe 
+          class="sim-iframe"
+          src="https://mfgatos3.github.io/foodshield-simulator/"
+          title="FoodShield Web Simulator"
+          loading="lazy"
+          allow="fullscreen"
+          sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+        </iframe>
+      </div>
+
+      <!-- Key Interactive Parameters Strip -->
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;">
+        <div class="glass-card" style="padding: 4px 8px; text-align: center;">
+          <div style="font-family: var(--font-mono); font-size: 0.52em; color: var(--accent-primary); font-weight: 700;">20 &deg;C &ndash; 35 &deg;C</div>
+          <div style="font-size: 0.42em; color: var(--text-muted);">Ambient Temp ($T_{\text{amb}}$)</div>
+        </div>
+        <div class="glass-card" style="padding: 4px 8px; text-align: center;">
+          <div style="font-family: var(--font-mono); font-size: 0.52em; color: var(--accent-primary); font-weight: 700;">0.5h &ndash; 4.0h</div>
+          <div style="font-size: 0.42em; color: var(--text-muted);">Transit Duration ($t$)</div>
+        </div>
+        <div class="glass-card" style="padding: 4px 8px; text-align: center;">
+          <div style="font-family: var(--font-mono); font-size: 0.52em; color: var(--accent-primary); font-weight: 700;">$k$ Factor</div>
+          <div style="font-size: 0.42em; color: var(--text-muted);">Packaging Insulation</div>
+        </div>
+        <div class="glass-card" style="padding: 4px 8px; text-align: center;">
+          <div style="font-family: var(--font-mono); font-size: 0.52em; color: var(--accent-primary); font-weight: 700;">$T(t)$ vs $N(t)$</div>
+          <div style="font-size: 0.42em; color: var(--text-muted);">Dual Dynamic Plots</div>
+        </div>
+        <div class="glass-card-alert" style="padding: 4px 8px; text-align: center;">
+          <div style="font-family: var(--font-mono); font-size: 0.52em; color: var(--alert-crimson); font-weight: 700;">1,000 CFU/g</div>
+          <div style="font-size: 0.42em; color: var(--alert-title);">INVIMA 2674 Alert</div>
+        </div>
+      </div>
+
+      <div class="slide-footer-meta">
+        <span>FoodShield Defense</span>
+        <span>Slide 5 of 9</span>
+        <span>Live Streamlit Simulation Engine</span>
+      </div>
+
+      <aside class="notes">
+        <strong>Pacing: 4:30 - 7:30 (3 Minutes) - Critical Interactive Showcase</strong><br/>
+        <strong>Demonstration Protocol for Evaluators:</strong><br/>
+        1. <em>Direct Panel's Attention to the Simulator:</em> Here you observe the live FoodShield web platform running directly within our presentation, hosted live on the web.<br/><br/>
+        2. <em>Scenario A (Unregulated Informal Transport):</em> Set Ambient Temperature to 30&deg;C (typical midday Ibagué), Transit Time to 2 hours, and Packaging to uninsulated open plastic. Show how the thermal curve jumps above 15&deg;C in under 40 minutes, causing Salmonella colony count to breach the INVIMA Resolution 2674 regulatory limit of 1,000 CFU/g. Highlight the automated Red Alert trigger.<br/><br/>
+        3. <em>Scenario B (FoodShield Low-Cost Intervention):</em> Switch packaging to basic styrofoam insulation (k = 0.01) and adjust departure time to morning conditions (ambient 22&deg;C). Show how the bacterial curve remains safely suppressed beneath the statutory threshold throughout the entire 90-minute transit window.
+      </aside>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 6: INTEGRATED SCIENTIFIC & SOCIO-SPATIAL EVIDENCE (7:30 - 9:00)
+         ====================================================================== -->
+    <section data-transition="slide">
+      <div class="section-badge">Quantitative &amp; Empirical Integration</div>
+      <h2>Integrated Scientific &amp; Socio-Spatial Evidence</h2>
+      <div class="accent-bar"></div>
+
+      <div class="grid-2">
+        
+        <!-- Mathematical & Thermal Modeling -->
+        <div class="glass-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <h3>&#x2211; Bio-Thermal Mathematical Model</h3>
+            <span class="pill-tag">&#x269B; Technoscience</span>
+          </div>
+
+          <div class="formula-box">
+            <div style="font-size: 0.52em; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 2px;">
+              Newton's Law of Cooling (Thermal Dissipation):
+            </div>
+            $$T(t) = T_{\text{amb}} + (T_0 - T_{\text{amb}}) \cdot e^{-kt}$$
+            <div style="font-size: 0.48em; color: var(--text-dim); margin-top: 2px;">
+              Where $T_0$ is initial meat temperature (4 &deg;C), $T_{\text{amb}}$ is external air, and $k$ represents insulation.
+            </div>
+          </div>
+
+          <div class="formula-box">
+            <div style="font-size: 0.52em; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 2px;">
+              Bacterial Proliferation (Binary Fission Kinetics):
+            </div>
+            $$N(t) = N_0 \cdot 2^n \quad \text{where} \quad n = \frac{t}{g(T)}$$
+            <div style="font-size: 0.48em; color: var(--text-dim); margin-top: 2px;">
+              Generation interval $g(T)$ accelerates exponentially between 20 &deg;C and 43 &deg;C.
+            </div>
+          </div>
+        </div>
+
+        <!-- Socio-Spatial Data & Vulnerability Indicators -->
+        <div class="glass-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <h3>&#x1F5FA; Socio-Spatial Empirical Data</h3>
+            <span class="pill-tag">&#x2696; Social Justice</span>
+          </div>
+
+          <div style="background: var(--formula-bg); border: 1px solid var(--border-accent); border-radius: 6px; padding: 8px 12px; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <span style="font-size: 0.68em; font-weight: 700; color: var(--heading-color);">DANE FIES Index (2023)</span>
+              <span class="pill-tag">Food Insecurity</span>
+            </div>
+            <p style="font-size: 0.62em; color: var(--text-muted); margin: 4px 0 0;">
+              Household Food Insecurity Experience Scale verifies that Comuna 8 registers among the highest municipal proportions of dietary vulnerability in Ibagué.
+            </p>
+          </div>
+
+          <div style="background: var(--formula-bg); border: 1px solid var(--border-accent); border-radius: 6px; padding: 8px 12px; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <span style="font-size: 0.68em; font-weight: 700; color: var(--heading-color);">RUV Conflict Registry (2024)</span>
+              <span class="pill-tag">Structural Deficit</span>
+            </div>
+            <p style="font-size: 0.62em; color: var(--text-muted); margin: 4px 0 0;">
+              High concentrations of displaced and informal settlements lack municipal refrigeration infrastructure, leaving families with zero commercial market leverage.
+            </p>
+          </div>
+
+          <p style="font-size: 0.58em; color: var(--accent-primary); margin: 0; font-style: italic;">
+            Empirical Synthesis: Biological risk maps directly onto historical spatial inequality.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="slide-footer-meta">
+        <span>FoodShield Defense</span>
+        <span>Slide 6 of 9</span>
+        <span>Scientific &amp; Socio-Spatial Evidence</span>
+      </div>
+
+      <aside class="notes">
+        <strong>Pacing: 7:30 - 9:00 (1.5 Minutes)</strong><br/>
+        <strong>Panel Script:</strong> On this slide, we unite quantitative physics with sociological reality.<br/><br/>
+        On the left, our mathematical model couples Newton's Law of Cooling with exponential bacterial fission kinetics. As meat heats from 4 degrees toward ambient temperature, the generation time g(T) drops precipitously, driving bacterial counts N(t) upwards in an exponential hockey stick curve.<br/><br/>
+        On the right, official demographic data from DANE and the Unified Victims Registry (RUV) reveals that the people consuming this meat in Comuna 8 are victims of forced displacement and severe economic vulnerability.<br/><br/>
+        Thermodynamics and sociology converge here: thermal degradation is not evenly distributed across Ibagué; it concentrates in households with the least capacity to absorb illness.
+      </aside>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 7: COUNTERARGUMENT & OPERATIONAL REBUTTAL (9:00 - 10:15)
+         ====================================================================== -->
+    <section data-transition="slide">
+      <div class="section-badge">Critical Academic Defense</div>
+      <h2>Counterargument &amp; Operational Rebuttal</h2>
+      <div class="accent-bar"></div>
+
+      <div class="grid-2">
+        
+        <!-- The Objection Card -->
+        <div class="glass-card-alert">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span class="pill-tag pill-tag-alert">&#x2716; Academic Skeptic's Objection</span>
+            <span style="font-family: var(--font-mono); font-size: 0.50em; color: var(--alert-title);">Capital Myth</span>
+          </div>
+          <h3 style="color: var(--alert-title); font-size: 0.85em; margin-bottom: 6px;">
+            "Food safety is unattainable without expensive industrial refrigeration fleets."
+          </h3>
+          <p style="font-size: 0.66em; color: var(--alert-text); line-height: 1.45; margin-bottom: 8px;">
+            Critics argue that informal poultry vendors in developing municipalities cannot ensure compliance with sanitary codes without purchasing expensive refrigerated vehicles costing over $30,000 USD.
+          </p>
+          <div style="background: rgba(0, 0, 0, 0.2); border-radius: 4px; padding: 6px 8px; font-size: 0.58em; color: var(--alert-title);">
+            Implication: Informal vendors must either be criminalized or excluded, worsening local poverty.
+          </div>
+        </div>
+
+        <!-- The Rebuttal Card -->
+        <div class="glass-card-success">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span class="pill-tag pill-tag-green">&#x2714; FoodShield Operational Rebuttal</span>
+            <span style="font-family: var(--font-mono); font-size: 0.50em; color: var(--success-title);">Empirical Proof</span>
+          </div>
+          <h3 style="color: var(--success-title); font-size: 0.85em; margin-bottom: 6px;">
+            Low-cost interventions expand safe transit window by up to 90 minutes.
+          </h3>
+          <p style="font-size: 0.66em; color: var(--success-text); line-height: 1.45; margin-bottom: 8px;">
+            Simulation data proves simple operational modifications achieve INVIMA compliance:
+          </p>
+
+          <ul style="margin: 0; padding-left: 16px; font-size: 0.62em; color: var(--success-text); line-height: 1.5;">
+            <li><strong>Temporal Dispatch:</strong> Early morning transport (6:00 AM) leverages 20 &deg;C &ndash; 22 &deg;C air.</li>
+            <li><strong>Frugal Insulation ($k = 0.01$):</strong> Expanded polystyrene boxes cost under $3 USD and reduce heat dissipation by 72%.</li>
+            <li><strong>Route Compression:</strong> Logistics protocols keep transit strictly under 75 minutes.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Quantitative Comparison Strip -->
+      <div class="glass-card" style="margin-top: 10px; padding: 8px 16px; display: flex; justify-content: space-around; align-items: center; text-align: center;">
+        <div>
+          <div class="metric-value" style="color: var(--alert-crimson); font-size: 1.05em;">$30,000+ USD</div>
+          <div class="metric-label">Refrigerated Truck Fleet</div>
+        </div>
+        <div style="font-size: 1.1em; color: var(--border-accent);">&#x279D;</div>
+        <div>
+          <div class="metric-value" style="color: var(--success-green); font-size: 1.05em;">&lt; $3 USD</div>
+          <div class="metric-label">FoodShield Passive Insulation</div>
+        </div>
+        <div style="font-size: 1.1em; color: var(--border-accent);">&#x279D;</div>
+        <div>
+          <div class="metric-value" style="color: var(--accent-primary); font-size: 1.05em;">+90 min</div>
+          <div class="metric-label">Added Safe Transit Window</div>
+        </div>
+      </div>
+
+      <div class="slide-footer-meta">
+        <span>FoodShield Defense</span>
+        <span>Slide 7 of 9</span>
+        <span>Counterargument &amp; Rebuttal</span>
+      </div>
+
+      <aside class="notes">
+        <strong>Pacing: 9:00 - 10:15 (1.25 Minutes)</strong><br/>
+        <strong>Panel Script:</strong> In any rigorous academic defense, one must address the strongest objections to their model.<br/><br/>
+        Orthodox critics argue that true sanitary compliance is impossible without capital-intensive refrigerated transport fleets that informal vendors simply cannot afford. They argue informal vending must be prohibited altogether.<br/><br/>
+        Our bio-thermal simulations refute this fatalistic assumption. We prove that by combining schedule adjustment (departing at 6:00 AM in 21-degree weather) with basic styrofoam packaging costing less than 3 dollars, the safe transit duration extends by up to 90 minutes, fully preserving INVIMA compliance without industrial machinery.<br/><br/>
+        Science serves here as an instrument of economic inclusion rather than exclusion.
+      </aside>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 8: KEY CONCLUSIONS (10:15 - 11:15)
+         ====================================================================== -->
+    <section data-transition="slide">
+      <div class="section-badge">Academic Defense Synthesis</div>
+      <h2>Key Conclusions</h2>
+      <div class="accent-bar"></div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 4px;">
+        
+        <!-- Conclusion 1 -->
+        <div class="glass-card" style="display: flex; align-items: flex-start; gap: 14px; padding: 12px 16px;">
+          <div class="num-bullet">01</div>
+          <div>
+            <h3 style="color: var(--heading-color); font-size: 0.82em; margin-bottom: 2px;">Predictive Bio-Thermal Accuracy</h3>
+            <p style="font-size: 0.68em; color: var(--text-muted); margin: 0;">
+              Bio-thermal modeling accurately predicts that un-refrigerated poultry exposed to Ibagué heat breaches legal safety thresholds (<strong style="color: var(--alert-crimson);">1,000 CFU/g</strong> under INVIMA Res. 2674) within <strong style="color: var(--accent-primary);">80 to 120 minutes</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Conclusion 2 -->
+        <div class="glass-card" style="display: flex; align-items: flex-start; gap: 14px; padding: 12px 16px;">
+          <div class="num-bullet">02</div>
+          <div>
+            <h3 style="color: var(--heading-color); font-size: 0.82em; margin-bottom: 2px;">Viability of Frugal Cold-Chain Alternatives</h3>
+            <p style="font-size: 0.68em; color: var(--text-muted); margin: 0;">
+              Low-cost insulation ($k = 0.01$) and schedule adjustments provide viable, immediate alternatives to industrial refrigeration, extending the safe window by up to <strong style="color: var(--success-green);">90 minutes</strong> at minimal capital expense.
+            </p>
+          </div>
+        </div>
+
+        <!-- Conclusion 3 -->
+        <div class="glass-card" style="display: flex; align-items: flex-start; gap: 14px; padding: 12px 16px;">
+          <div class="num-bullet">03</div>
+          <div>
+            <h3 style="color: var(--heading-color); font-size: 0.82em; margin-bottom: 2px;">Democratization of Digital Health Advocacy</h3>
+            <p style="font-size: 0.68em; color: var(--text-muted); margin: 0;">
+              Web-based simulation tools effectively bridge thermodynamic equations with community risk communication, empowering municipal health secretariats to enact evidence-based public health protections.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Synthesis Badges -->
+      <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+        <span class="pill-tag">&#x2211; Quantitative Rigor</span>
+        <span class="pill-tag">&#x1F4B8; Economic Accessibility</span>
+        <span class="pill-tag">&#x1F3DB; Municipal Policy Impact</span>
+        <span class="pill-tag">&#x2696; Human Right to Safe Food</span>
+      </div>
+
+      <div class="slide-footer-meta">
+        <span>FoodShield Defense</span>
+        <span>Slide 8 of 9</span>
+        <span>Key Academic Conclusions</span>
+      </div>
+
+      <aside class="notes">
+        <strong>Pacing: 10:15 - 11:15 (1 Minute)</strong><br/>
+        <strong>Panel Script:</strong> In conclusion, our interdisciplinary research establishes three definitive findings:<br/><br/>
+        First: Mathematical modeling confirms that un-refrigerated transport breaches legal bacterial limits within 80 to 120 minutes under Ibagué temperatures, identifying the exact window where intervention is urgent.<br/><br/>
+        Second: Frugal thermal packaging and early scheduling provide scientifically robust, immediate alternatives to capital-intensive refrigeration, defending public health without destroying livelihoods.<br/><br/>
+        Third: Interactive digital software demystifies thermodynamics, turning complex differential equations into an accessible policy instrument for municipal decision-makers and grassroot community vendors.
+      </aside>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 9: ACADEMIC REFERENCES & REGULATORY FRAMEWORK (11:15 - 12:00)
+         ====================================================================== -->
+    <section data-transition="fade">
+      <div class="section-badge">Scholarly Foundation &amp; Standards</div>
+      <h2>Academic References &amp; Regulatory Framework</h2>
+      <div class="accent-bar"></div>
+
+      <div class="grid-2">
+        
+        <div>
+          <div class="ref-entry">
+            <strong>INVIMA.</strong> (2013). <em>Resolution 2674 of 2013: Sanitary Requirements for Food Logistics, Manufacturing, Processing, and Transport in Colombia</em>. Instituto Nacional de Vigilancia de Medicamentos y Alimentos, Bogotá, D.C.
+          </div>
+
+          <div class="ref-entry">
+            <strong>DANE.</strong> (2023). <em>Socio-Spatial &amp; Vulnerability Indicators: Food Insecurity Experience Scale (FIES) for Ibagué (Tolima)</em>. Departamento Administrativo Nacional de Estadística, República de Colombia.
+          </div>
+
+          <div class="ref-entry">
+            <strong>RUV.</strong> (2024). <em>Registro Único de Víctimas: Forced Displacement Records in Comuna 8 (Ibagué)</em>. Unidad para la Atención y Reparación Integral a las Víctimas, Colombia.
+          </div>
+        </div>
+
+        <div>
+          <div class="ref-entry">
+            <strong>FAO &amp; WHO.</strong> (2021). <em>Guidelines on Microbiological Risk Assessment for Salmonella spp. in Poultry Meat</em>. Codex Alimentarius Commission, Food and Agriculture Organization of the United Nations, Rome.
+          </div>
+
+          <div class="ref-entry">
+            <strong>Baranyi, J., &amp; Tamplin, M. L.</strong> (2004). ComBase: A common database on microbial responses to food environments. <em>Journal of Food Protection</em>, 67(9), 1967-1971.
+          </div>
+
+          <!-- Academic Defense Closing Box -->
+          <div class="glass-card" style="text-align: center; padding: 10px; background: var(--tag-bg); border-color: var(--border-accent);">
+            <div style="font-size: 1.0em; color: var(--accent-primary); margin-bottom: 2px;">&#x1F393;</div>
+            <div style="font-size: 0.70em; font-weight: 700; color: var(--heading-color);">Grade 10 Academic Defense Concluded</div>
+            <div style="font-size: 0.54em; color: var(--text-muted); margin-top: 2px;">
+              Thank you for your academic evaluation. The floor is now open for jury questions.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="slide-footer-meta">
+        <span>FoodShield Defense</span>
+        <span>Slide 9 of 9</span>
+        <span>Academic References &amp; Juror Q&amp;A</span>
+      </div>
+
+      <aside class="notes">
+        <strong>Pacing: 11:15 - 12:00 (45 Seconds)</strong><br/>
+        <strong>Panel Closing Script:</strong> Our investigation stands firmly anchored in Colombian sanitary law under INVIMA Resolution 2674, official socio-spatial metrics from DANE and the Victims Registry, and peer-reviewed microbiological literature from the FAO, WHO, and Baranyi & Tamplin.<br/><br/>
+        Food safety in Comuna 8 is achievable today through empirical science and distributive justice.<br/><br/>
+        I thank the evaluation committee for your time, mentorship, and attention. I now enthusiastically welcome your questions and critique.
+      </aside>
+    </section>
+
+  </div><!-- /.slides -->
+</div><!-- /.reveal -->
+
+<!-- Reveal.js Core Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+<!-- Reveal.js Math Plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/math/math.min.js"></script>
+<!-- Reveal.js Notes Plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/notes/notes.min.js"></script>
+
+<script>
+  // ==========================================================================
+  // THEME SWITCHER LOGIC (5 SCHEMES + KEYBOARD SHORTCUT 'T' + LOCALSTORAGE)
+  // ==========================================================================
+  const themes = [
+    { id: 'theme-navy', name: 'Cyber Navy' },
+    { id: 'theme-emerald', name: 'Bio Emerald' },
+    { id: 'theme-light', name: 'Academic Sky' },
+    { id: 'theme-indigo', name: 'Deep Violet' },
+    { id: 'theme-amber', name: 'Risk Amber' }
+  ];
+
+  function applyTheme(themeId) {
+    const selected = themes.find(t => t.id === themeId) || themes[0];
+    
+    // Update body class
+    document.body.className = selected.id;
+    
+    // Update active swatch
+    document.querySelectorAll('.swatch-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-theme') === selected.id);
+    });
+
+    // Update label
+    const nameLabel = document.getElementById('theme-display-name');
+    if (nameLabel) nameLabel.textContent = selected.name;
+
+    // Persist choice
+    localStorage.setItem('foodshield-theme', selected.id);
+
+    // Refresh MathJax if needed
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+  }
+
+  function cycleTheme() {
+    const currentClass = document.body.className.split(' ').find(c => c.startsWith('theme-')) || 'theme-navy';
+    const currentIndex = themes.findIndex(t => t.id === currentClass);
+    const nextIndex = (currentIndex + 1) % themes.length;
+    applyTheme(themes[nextIndex].id);
+  }
+
+  // Swatch click handlers
+  document.querySelectorAll('.swatch-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      applyTheme(this.getAttribute('data-theme'));
+    });
+  });
+
+  // Global key listener for 'T' / 't'
+  document.addEventListener('keydown', function(e) {
+    // Only cycle if not typing in an input
+    if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+      if (e.key === 't' || e.key === 'T') {
+        cycleTheme();
+      }
+    }
+  });
+
+  // Load saved theme or default
+  const savedTheme = localStorage.getItem('foodshield-theme') || 'theme-navy';
+  applyTheme(savedTheme);
+
+  // ==========================================================================
+  // REVEAL.JS INITIALIZATION
+  // ==========================================================================
+  Reveal.initialize({
+    // Standard presentation dimensions (16:9 widescreen optimal)
+    width: 1280,
+    height: 720,
+    margin: 0.04,
+    minScale: 0.2,
+    maxScale: 2.0,
+
+    // Navigation & controls
+    controls: true,
+    controlsLayout: 'bottom-right',
+    controlsBackArrows: 'faded',
+    progress: true,
+    slideNumber: 'c/t',
+    hash: true,
+    history: true,
+    keyboard: true,
+    overview: true,
+    center: false,
+    touch: true,
+    loop: false,
+    rtl: false,
+    navigationMode: 'default',
+    shuffle: false,
+    autoPlayMedia: null,
+
+    // Presentation transition styles
+    transition: 'slide',
+    transitionSpeed: 'default',
+    backgroundTransition: 'fade',
+
+    // Plugins: MathJax & Speaker Notes Console
+    plugins: [ RevealMath.MathJax3, RevealNotes ]
+  });
+
+  // Re-run MathJax rendering when slides change to guarantee crisp typesetting
+  Reveal.on('slidechanged', function(event) {
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+  });
+</script>
+
+</body>
+</html>
